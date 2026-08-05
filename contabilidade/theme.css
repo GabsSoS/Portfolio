@@ -1,0 +1,35 @@
+/* Tema — Prisma Contábil (corporativo · moderno · confiável) */
+:root {
+  --color-bg: #ffffff;
+  --color-bg-alt: #f2f6fa;
+  --color-surface: #ffffff;
+  --color-text: #17212e;
+  --color-text-muted: #5a6b7d;
+  --color-primary: #145da0;
+  --color-primary-dark: #0f4778;
+  --color-primary-contrast: #ffffff;
+  --color-secondary: #0d2438;
+  --color-accent: #1f9d55;
+  --color-border: #e1e8f0;
+  --color-success: #1f9d55;
+  --gradient-primary: linear-gradient(135deg, #1a75c4, #0f4778);
+  --font-heading: "Montserrat", "Inter", sans-serif;
+  --font-body: "Inter", sans-serif;
+}
+
+body { background: var(--color-bg); }
+
+.hero { background: linear-gradient(160deg, #eaf2fb 0%, #ffffff 55%); }
+.hero__badge svg { color: var(--color-accent); }
+
+/* Destaque verde nas estatísticas de economia */
+#economia .stats-bar strong { color: var(--color-accent); }
+
+/* Consultoria — banner de destaque */
+.consult__grid { display: grid; grid-template-columns: 1.3fr 0.7fr; gap: var(--space-6); align-items: center; }
+@media (max-width: 900px) { .consult__grid { grid-template-columns: 1fr; } }
+.consult .section__subtitle { color: rgba(255,255,255,0.75); }
+.consult__stats { display: grid; gap: var(--space-4); }
+.consult__stats .about__stat { background: rgba(255,255,255,0.07); border: 1px solid rgba(31,157,85,0.3); border-radius: var(--radius-md); padding: var(--space-4); text-align: center; }
+.consult__stats .about__stat strong { color: var(--color-accent); }
+.consult__stats .about__stat span { color: #b9c6d4; }

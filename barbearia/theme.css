@@ -1,0 +1,52 @@
+/* Tema — Barbearia Nobre (luxuoso · masculino · elegante) */
+:root {
+  --color-bg: #ffffff;
+  --color-bg-alt: #f6f4f0;
+  --color-surface: #ffffff;
+  --color-text: #1a1712;
+  --color-text-muted: #6b6459;
+  --color-primary: #c9a227;
+  --color-primary-dark: #a3821c;
+  --color-primary-contrast: #14120e;
+  --color-secondary: #100e0b;
+  --color-accent: #c9a227;
+  --color-border: #e9e4d8;
+  --color-success: #2e7d4f;
+  --gradient-primary: linear-gradient(135deg, #dcb94a, #a3821c);
+  --font-heading: "Playfair Display", "Poppins", serif;
+  --font-body: "Inter", sans-serif;
+}
+
+body { background: var(--color-bg); }
+
+.header { background: color-mix(in srgb, #0d0b09 92%, transparent); backdrop-filter: blur(10px); }
+.header .nav__logo, .header .nav__links a { color: #f1ece0; }
+.header .nav__links a:hover { color: var(--color-primary); }
+.header.is-scrolled { border-bottom-color: rgba(201,162,39,0.25); }
+.nav__toggle svg { color: #f1ece0; }
+@media (max-width: 900px) {
+  .nav__links { background: var(--color-secondary); }
+  .nav__links a { color: #f1ece0; }
+}
+
+.hero { background: radial-gradient(circle at 80% 0%, #232019 0%, var(--color-secondary) 55%); color: #efe9dc; }
+.hero__eyebrow { background: rgba(255,255,255,0.06); color: #efe9dc; border: 1px solid rgba(201,162,39,0.35); box-shadow: none; }
+.hero h1 { color: #fff; }
+.hero__subtitle { color: #c9c3b4; }
+.hero__quickstat { color: #efe9dc; }
+
+.section--gold-line { position: relative; }
+.section--gold-line::before {
+  content: "";
+  display: block;
+  width: 64px;
+  height: 3px;
+  background: var(--gradient-primary);
+  margin-bottom: var(--space-3);
+  border-radius: var(--radius-full);
+}
+
+.barber-card { text-align: center; }
+.barber-card img { border-radius: var(--radius-lg); aspect-ratio: 3/3.4; object-fit: cover; margin-bottom: var(--space-3); box-shadow: var(--shadow-md); }
+.barber-card h3 { margin-bottom: 0.15rem; }
+.barber-card span { color: var(--color-primary); font-size: 0.85rem; font-weight: 600; }

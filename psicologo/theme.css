@@ -1,0 +1,38 @@
+/* Tema — Espaço Acolher Psicologia (acolhedor · calmo · minimalista) */
+:root {
+  --color-bg: #faf7f2;
+  --color-bg-alt: #f1ece1;
+  --color-surface: #fffdfa;
+  --color-text: #33362f;
+  --color-text-muted: #6f7266;
+  --color-primary: #6b8f71;
+  --color-primary-dark: #52704f;
+  --color-primary-contrast: #ffffff;
+  --color-secondary: #33422e;
+  --color-accent: #c98a5e;
+  --color-border: #e6ddce;
+  --color-success: #6b8f71;
+  --gradient-primary: linear-gradient(135deg, #86ab7f, #52704f);
+  --font-heading: "Poppins", "Inter", sans-serif;
+  --font-body: "Inter", sans-serif;
+}
+
+body { background: var(--color-bg); }
+
+.header { background: color-mix(in srgb, var(--color-bg) 90%, transparent); }
+
+.hero { background: radial-gradient(circle at 82% 8%, #eef2e6 0%, var(--color-bg) 60%); }
+
+.section--line { position: relative; }
+.section--line::before {
+  content: "";
+  display: block;
+  width: 56px;
+  height: 3px;
+  background: var(--gradient-primary);
+  margin-bottom: var(--space-3);
+  border-radius: var(--radius-full);
+}
+
+/* Nota de rodapé sobre registro profissional */
+.crp-note { font-size: 0.82rem; color: var(--color-text-muted); margin-top: var(--space-2); }

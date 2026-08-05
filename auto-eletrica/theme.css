@@ -1,0 +1,93 @@
+/* Tema — VoltMax Auto Elétrica (técnico · ágil · confiável) */
+:root {
+  --color-bg: #ffffff;
+  --color-bg-alt: #eef3fb;
+  --color-surface: #ffffff;
+  --color-text: #10151c;
+  --color-text-muted: #55606e;
+  --color-primary: #0072ff;
+  --color-primary-dark: #0050b3;
+  --color-primary-contrast: #ffffff;
+  --color-secondary: #0a1220;
+  --color-accent: #ffcc00;
+  --color-border: #dbe4ee;
+  --color-success: #16a34a;
+  --gradient-primary: linear-gradient(135deg, #1e8bff, #0050b3);
+  --font-heading: "Poppins", "Inter", sans-serif;
+  --font-body: "Inter", sans-serif;
+}
+
+body { background: var(--color-bg); }
+
+.header { background: color-mix(in srgb, #070c16 90%, transparent); backdrop-filter: blur(10px); }
+.header .nav__logo, .header .nav__links a { color: #eef3fb; }
+.header .nav__links a:hover { color: var(--color-accent); }
+.header.is-scrolled { border-bottom-color: rgba(0,114,255,0.3); }
+.nav__toggle svg { color: #eef3fb; }
+@media (max-width: 900px) {
+  .nav__links { background: var(--color-secondary); }
+  .nav__links a { color: #eef3fb; }
+}
+
+.hero {
+  background:
+    radial-gradient(circle at 12% 15%, rgba(0,114,255,0.25), transparent 55%),
+    radial-gradient(circle at 85% 0%, rgba(255,204,0,0.12), transparent 45%),
+    var(--color-secondary);
+  color: #e9edf4;
+}
+.hero__eyebrow { background: rgba(255,255,255,0.06); color: #e9edf4; border: 1px solid rgba(0,114,255,0.4); box-shadow: none; }
+.hero h1 { color: #fff; }
+.hero__subtitle { color: #b6c0cf; }
+.hero__quickstat { color: #e9edf4; }
+.hero__quickstat svg { color: var(--color-accent); }
+.hero__badge { background: #101a2c; box-shadow: var(--shadow-lg); }
+.hero__badge strong { color: #fff; }
+.hero__badge span { color: #94a1b3; }
+.hero__badge svg { color: var(--color-accent); }
+
+/* Diagnóstico em destaque */
+.diagnostic { background: var(--color-secondary); color: #e9edf4; }
+.diagnostic h2, .diagnostic h3 { color: #fff; }
+.diagnostic .section__subtitle { color: #b6c0cf; }
+.diagnostic .kicker { background: rgba(255,204,0,0.14); color: var(--color-accent); }
+.diagnostic .about__list svg { color: var(--color-accent); }
+.diagnostic__grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: var(--space-6); align-items: center; }
+@media (max-width: 900px) { .diagnostic__grid { grid-template-columns: 1fr; } }
+.diagnostic__media img {
+  border-radius: var(--radius-lg);
+  box-shadow: 0 20px 60px rgba(0,114,255,0.25);
+  width: 100%;
+  aspect-ratio: 5/4;
+  object-fit: cover;
+  border: 1px solid rgba(0,114,255,0.35);
+}
+
+/* Atendimento rápido */
+.quick-response__box {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-6);
+  align-items: center;
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  margin-bottom: var(--space-6);
+}
+.quick-response__icon {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--color-accent);
+  color: #10151c;
+  box-shadow: 0 0 0 8px color-mix(in srgb, var(--color-accent) 20%, transparent);
+  flex-shrink: 0;
+}
+.quick-response__icon svg { width: 50px; height: 50px; }
+@media (max-width: 700px) {
+  .quick-response__box { grid-template-columns: 1fr; text-align: center; }
+  .quick-response__icon { margin-inline: auto; }
+}
