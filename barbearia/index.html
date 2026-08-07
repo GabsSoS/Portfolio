@@ -28,7 +28,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@600;700;800&family=Sacramento&family=Mulish:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Mulish:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
 <link rel="stylesheet" href="style.css" />
 
@@ -57,6 +57,8 @@
 </script>
 </head>
 <body>
+<script>(function(){try{var m=window.matchMedia("(prefers-reduced-motion: reduce)").matches;document.documentElement.classList.add("js");if(!m)document.documentElement.classList.add("js--motion");}catch(e){}})();</script>
+
 <a href="#conteudo" class="skip-link">Pular para o conteúdo</a>
 
 <header class="header">
@@ -66,13 +68,13 @@
     </a>
     <nav class="nav__links" id="menu" aria-label="Menu principal">
       <a href="#servicos">Serviços</a>
-      <a href="#barbeiros">Barbeiros</a>
+      <a href="#equipe">Barbeiros</a>
       <a href="#galeria">Galeria</a>
+      <a href="#localizacao">Localização</a>
       <a href="#faq">Dúvidas</a>
-      <a href="#contato">Contato</a>
     </nav>
     <div class="header__actions">
-      <a href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Quero%20agendar%20um%20hor%C3%A1rio%20na%20Barbearia%20Nobre." class="btn btn--outline" target="_blank" rel="noopener">
+      <a href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Quero%20agendar%20um%20hor%C3%A1rio%20na%20Barbearia%20Nobre." class="btn btn--outline-dark" target="_blank" rel="noopener">
         <i data-lucide="calendar-check"></i> Agendar
       </a>
       <button class="nav__toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">
@@ -83,173 +85,241 @@
 </header>
 
 <main id="conteudo">
+
   <!-- HERO -->
   <section class="hero" id="topo">
-    <div class="wrap hero__inner">
-      <div class="seal"><i data-lucide="scissors"></i></div>
-      <span class="hero__eyebrow"><i data-lucide="star"></i> 4.9/5 em mais de 450 avaliações no Google</span>
-      <h1>Estilo, tradição e precisão em cada corte.</h1>
-      <p class="hero__sub">Uma barbearia premium para quem exige excelência: cortes de precisão, barba desenhada e um ambiente pensado para o seu momento de cuidado.</p>
-      <div class="hero__actions">
-        <a href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Quero%20agendar%20um%20hor%C3%A1rio%20na%20Barbearia%20Nobre." class="btn btn--gold btn--lg" target="_blank" rel="noopener">
+    <div class="hero__media" data-hero-media>
+      <img src="https://images.unsplash.com/photo-1672257493395-c6cb634397e2?auto=format&fit=crop&w=1800&h=1400&q=80" alt="Interior da Barbearia Nobre, com cadeiras de couro e acabamento em madeira" width="1800" height="1400" />
+    </div>
+    <div class="hero__scrim"></div>
+    <div class="wrap hero__content">
+      <span class="hero__eyebrow" data-hero-fade><i data-lucide="star"></i> 4,9/5 em mais de 450 avaliações no Google</span>
+      <h1 data-split-hero>Estilo, tradição e precisão em cada corte.</h1>
+      <p class="hero__sub" data-hero-fade>Uma barbearia premium para quem exige excelência: cortes de precisão, barba desenhada e um ambiente pensado para o seu momento de cuidado.</p>
+      <div class="hero__actions" data-hero-fade>
+        <a href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Quero%20agendar%20um%20hor%C3%A1rio%20na%20Barbearia%20Nobre." class="btn btn--clay btn--lg hero__cta" data-magnetic target="_blank" rel="noopener">
           <i data-lucide="calendar-check"></i> Agendar meu horário
         </a>
-        <a href="https://wa.me/5511999999999" class="btn btn--whats btn--lg" target="_blank" rel="noopener">
+        <a href="https://wa.me/5511999999999" class="btn btn--outline-dark btn--lg" target="_blank" rel="noopener">
           <i data-lucide="message-circle"></i> Falar no WhatsApp
         </a>
       </div>
-      <div class="hero__stats">
-        <span class="hero__stat"><i data-lucide="award"></i> +12 anos de tradição</span>
-        <span class="hero__stat"><i data-lucide="users"></i> +8.000 clientes atendidos</span>
-        <span class="hero__stat"><i data-lucide="sparkles"></i> Produtos premium importados</span>
+      <div class="hero__meta" data-hero-fade>
+        <div class="hero__meta-item"><strong>+12 anos</strong><span>De tradição</span></div>
+        <div class="hero__meta-item"><strong>+8.000</strong><span>Clientes atendidos</span></div>
+        <div class="hero__meta-item"><strong>Importados</strong><span>Produtos premium</span></div>
       </div>
     </div>
   </section>
 
-  <!-- BENEFÍCIOS -->
-  <section class="section section--panel" id="beneficios">
-    <div class="wrap">
-      <div class="section__head center">
-        <span class="kicker">Por que a Nobre</span>
-        <h2 class="section__title">Uma experiência acima da média</h2>
-        <p class="section__sub">Cada detalhe pensado para o seu conforto, do primeiro atendimento ao resultado final.</p>
-      </div>
-      <div class="ticket-grid">
-        <div class="ticket reveal"><div class="ticket__icon"><i data-lucide="scissors"></i></div><h3>Precisão profissional</h3><p>Barbeiros especializados com técnica apurada em cortes clássicos e modernos.</p></div>
-        <div class="ticket reveal reveal--delay-1"><div class="ticket__icon"><i data-lucide="sofa"></i></div><h3>Ambiente premium</h3><p>Espaço climatizado, elegante e pensado para o seu conforto durante todo o atendimento.</p></div>
-        <div class="ticket reveal reveal--delay-2"><div class="ticket__icon"><i data-lucide="flask-conical"></i></div><h3>Produtos importados</h3><p>Utilizamos linhas premium para cuidado capilar e de barba, com resultado duradouro.</p></div>
-        <div class="ticket reveal"><div class="ticket__icon"><i data-lucide="calendar-clock"></i></div><h3>Agendamento fácil</h3><p>Marque seu horário em segundos direto pelo WhatsApp, sem complicação.</p></div>
-        <div class="ticket reveal reveal--delay-1"><div class="ticket__icon"><i data-lucide="badge-check"></i></div><h3>Barbeiros especialistas</h3><p>Equipe certificada, em constante atualização com as tendências internacionais.</p></div>
-        <div class="ticket reveal reveal--delay-2"><div class="ticket__icon"><i data-lucide="wine"></i></div><h3>Cortesia no atendimento</h3><p>Café ou whisky por conta da casa enquanto você aproveita o momento.</p></div>
-      </div>
+  <!-- BARRA DE NÚMEROS -->
+  <section class="stat-strip">
+    <div class="wrap stat-strip__row">
+      <div class="stat-strip__item"><strong data-counter="12" data-counter-suffix="+">0</strong><span>Anos de tradição</span></div>
+      <div class="stat-strip__item"><strong data-counter="8000" data-counter-suffix="+">0</strong><span>Clientes atendidos</span></div>
+      <div class="stat-strip__item"><strong data-counter="4.9" data-counter-suffix="/5">0</strong><span>Nota no Google</span></div>
     </div>
   </section>
 
-  <!-- SOBRE -->
-  <section class="section" id="sobre">
+  <!-- SOBRE / EXPERIÊNCIA -->
+  <section class="section section--light" id="sobre">
     <div class="wrap about">
-      <div class="about__media reveal">
-        <img src="https://images.unsplash.com/photo-1672257493395-c6cb634397e2?auto=format&fit=crop&w=800&h=920&q=80" alt="Interior elegante da Barbearia Nobre com cadeiras de couro e acabamento em madeira" loading="lazy" width="800" height="920" />
+      <div class="about__figure reveal">
+        <img src="https://images.unsplash.com/photo-1672257493395-c6cb634397e2?auto=format&fit=crop&w=800&h=1000&q=80" alt="Estação de corte da Barbearia Nobre com espelho e cadeira de couro" loading="lazy" width="800" height="1000" />
       </div>
-      <div class="reveal">
-        <span class="kicker">Nossa história</span>
-        <h2 class="section__title">Tradição de barbearia clássica, com padrão internacional</h2>
+      <div>
+        <span class="eyebrow">Nossa história</span>
+        <h2 class="section__title" data-split-scroll>Tradição de barbearia clássica, com padrão internacional.</h2>
         <p class="section__sub">Há mais de 12 anos, a Barbearia Nobre nasceu do desejo de resgatar o ritual da barbearia clássica — aquele lugar onde o cliente é tratado como convidado, não como número.</p>
-        <ul class="about__list">
-          <li><i data-lucide="circle-check-big"></i> Missão: elevar a autoestima masculina através do cuidado pessoal.</li>
-          <li><i data-lucide="circle-check-big"></i> Equipe com formação internacional em barbering.</li>
-          <li><i data-lucide="circle-check-big"></i> Ambiente pensado para relaxar e recarregar as energias.</li>
+        <ul class="about__list reveal">
+          <li><span><strong>Missão:</strong> elevar a autoestima masculina através do cuidado pessoal.</span></li>
+          <li><span><strong>Equipe</strong> com formação internacional em barbering.</span></li>
+          <li><span><strong>Ambiente</strong> pensado para relaxar e recarregar as energias.</span></li>
         </ul>
-        <div class="about__stats">
-          <div class="about__stat"><strong data-counter="12" data-counter-suffix="+">0</strong><span>Anos</span></div>
-          <div class="about__stat"><strong data-counter="8000" data-counter-suffix="+">0</strong><span>Clientes</span></div>
-          <div class="about__stat"><strong data-counter="4.9" data-counter-suffix="/5">0</strong><span>Nota</span></div>
-        </div>
+        <a href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Quero%20agendar%20um%20hor%C3%A1rio%20na%20Barbearia%20Nobre." class="btn btn--ghost-light" target="_blank" rel="noopener">Conhecer a experiência Nobre →</a>
       </div>
     </div>
   </section>
 
   <!-- SERVIÇOS -->
-  <section class="section section--panel" id="servicos">
+  <section class="section section--dark" id="servicos">
     <div class="wrap">
-      <div class="section__head center">
-        <span class="kicker">Serviços</span>
-        <h2 class="section__title">Cuidado completo, do corte ao acabamento</h2>
-        <p class="section__sub">Serviços individuais ou combos pensados para cada estilo.</p>
+      <div class="section__head">
+        <span class="eyebrow">Serviços</span>
+        <h2 class="section__title">Do corte ao acabamento, cuidado completo</h2>
+        <p class="section__sub">Serviços individuais ou combinados — escolha e agende direto pelo WhatsApp.</p>
       </div>
-      <div class="menu-board reveal">
-        <div class="menu-row"><i data-lucide="scissors" class="menu-row__icon"></i><h3>Corte Clássico</h3><span class="menu-row__lead"></span><a class="menu-row__link" href="https://wa.me/5511999999999?text=Quero%20agendar%20um%20Corte%20Cl%C3%A1ssico" target="_blank" rel="noopener">Agendar</a><p>Corte sob medida para seu estilo de rosto, com finalização impecável.</p></div>
-        <div class="menu-row"><i data-lucide="axe" class="menu-row__icon"></i><h3>Barba Desenhada</h3><span class="menu-row__lead"></span><a class="menu-row__link" href="https://wa.me/5511999999999?text=Quero%20agendar%20uma%20Barba%20Desenhada" target="_blank" rel="noopener">Agendar</a><p>Modelagem completa com toalha quente, navalha e produtos premium.</p></div>
-        <div class="menu-row"><i data-lucide="sparkles" class="menu-row__icon"></i><h3>Combo Corte + Barba</h3><span class="menu-row__lead"></span><a class="menu-row__link" href="https://wa.me/5511999999999?text=Quero%20agendar%20o%20Combo%20Corte%20%2B%20Barba" target="_blank" rel="noopener">Agendar</a><p>O ritual completo da Nobre, com preço especial e prioridade na agenda.</p></div>
-        <div class="menu-row"><i data-lucide="eye" class="menu-row__icon"></i><h3>Design de Sobrancelha</h3><span class="menu-row__lead"></span><a class="menu-row__link" href="https://wa.me/5511999999999?text=Quero%20agendar%20Design%20de%20Sobrancelha" target="_blank" rel="noopener">Agendar</a><p>Ajuste fino que valoriza a expressão do rosto sem exageros.</p></div>
-        <div class="menu-row"><i data-lucide="paintbrush" class="menu-row__icon"></i><h3>Pigmentação de Barba</h3><span class="menu-row__lead"></span><a class="menu-row__link" href="https://wa.me/5511999999999?text=Quero%20agendar%20Pigmenta%C3%A7%C3%A3o%20de%20Barba" target="_blank" rel="noopener">Agendar</a><p>Uniformiza falhas e realça o volume com aspecto 100% natural.</p></div>
-        <div class="menu-row"><i data-lucide="droplets" class="menu-row__icon"></i><h3>Tratamento Capilar</h3><span class="menu-row__lead"></span><a class="menu-row__link" href="https://wa.me/5511999999999?text=Quero%20agendar%20Tratamento%20Capilar" target="_blank" rel="noopener">Agendar</a><p>Hidratação e fortalecimento para cabelo e couro cabeludo saudáveis.</p></div>
+      <div class="services__layout">
+        <div class="services__list" data-service-list>
+          <div class="service-row is-active" data-service-target="img-corte" tabindex="0">
+            <span class="service-row__num">01</span>
+            <h3 class="service-row__name">Corte Clássico</h3>
+            <a class="service-row__link" href="https://wa.me/5511999999999?text=Quero%20agendar%20um%20Corte%20Cl%C3%A1ssico" target="_blank" rel="noopener">Agendar <i data-lucide="arrow-up-right"></i></a>
+            <p>Corte sob medida para seu estilo de rosto, com finalização impecável.</p>
+          </div>
+          <div class="service-row" data-service-target="img-barba" tabindex="0">
+            <span class="service-row__num">02</span>
+            <h3 class="service-row__name">Barba Desenhada</h3>
+            <a class="service-row__link" href="https://wa.me/5511999999999?text=Quero%20agendar%20uma%20Barba%20Desenhada" target="_blank" rel="noopener">Agendar <i data-lucide="arrow-up-right"></i></a>
+            <p>Modelagem completa com toalha quente, navalha e produtos premium.</p>
+          </div>
+          <div class="service-row" data-service-target="img-combo" tabindex="0">
+            <span class="service-row__num">03</span>
+            <h3 class="service-row__name">Combo Corte + Barba</h3>
+            <a class="service-row__link" href="https://wa.me/5511999999999?text=Quero%20agendar%20o%20Combo%20Corte%20%2B%20Barba" target="_blank" rel="noopener">Agendar <i data-lucide="arrow-up-right"></i></a>
+            <p>O ritual completo da Nobre, com atendimento de cerca de 50 minutos e prioridade na agenda.</p>
+          </div>
+          <div class="service-row" data-service-target="img-sobrancelha" tabindex="0">
+            <span class="service-row__num">04</span>
+            <h3 class="service-row__name">Design de Sobrancelha</h3>
+            <a class="service-row__link" href="https://wa.me/5511999999999?text=Quero%20agendar%20Design%20de%20Sobrancelha" target="_blank" rel="noopener">Agendar <i data-lucide="arrow-up-right"></i></a>
+            <p>Ajuste fino que valoriza a expressão do rosto sem exageros.</p>
+          </div>
+          <div class="service-row" data-service-target="img-pigmentacao" tabindex="0">
+            <span class="service-row__num">05</span>
+            <h3 class="service-row__name">Pigmentação de Barba</h3>
+            <a class="service-row__link" href="https://wa.me/5511999999999?text=Quero%20agendar%20Pigmenta%C3%A7%C3%A3o%20de%20Barba" target="_blank" rel="noopener">Agendar <i data-lucide="arrow-up-right"></i></a>
+            <p>Uniformiza falhas e realça o volume com aspecto 100% natural.</p>
+          </div>
+          <div class="service-row" data-service-target="img-capilar" tabindex="0">
+            <span class="service-row__num">06</span>
+            <h3 class="service-row__name">Tratamento Capilar</h3>
+            <a class="service-row__link" href="https://wa.me/5511999999999?text=Quero%20agendar%20Tratamento%20Capilar" target="_blank" rel="noopener">Agendar <i data-lucide="arrow-up-right"></i></a>
+            <p>Hidratação e fortalecimento para cabelo e couro cabeludo saudáveis.</p>
+          </div>
+        </div>
+        <div class="services__media" aria-hidden="true">
+          <img id="img-corte" class="is-active" src="https://images.unsplash.com/photo-1675599193990-33d71150902b?auto=format&fit=crop&w=800&h=1000&q=80" alt="" loading="lazy" />
+          <img id="img-barba" src="https://images.pexels.com/photos/3998417/pexels-photo-3998417.jpeg?auto=compress&cs=tinysrgb&w=800&h=1000&fit=crop" alt="" loading="lazy" />
+          <img id="img-combo" src="https://images.unsplash.com/photo-1770253980732-dfed1cfdfa43?auto=format&fit=crop&w=800&h=1000&q=80" alt="" loading="lazy" />
+          <img id="img-sobrancelha" src="https://images.unsplash.com/photo-1759134248487-e8baaf31e33e?auto=format&fit=crop&w=800&h=1000&q=80" alt="" loading="lazy" />
+          <img id="img-pigmentacao" src="https://images.pexels.com/photos/8350416/pexels-photo-8350416.jpeg?auto=compress&cs=tinysrgb&w=800&h=1000&fit=crop" alt="" loading="lazy" />
+          <img id="img-capilar" src="https://images.unsplash.com/photo-1672257493395-c6cb634397e2?auto=format&fit=crop&w=800&h=1000&q=80" alt="" loading="lazy" />
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- BARBEIROS -->
-  <section class="section" id="barbeiros">
+  <!-- EQUIPE -->
+  <section class="section section--light" id="equipe">
     <div class="wrap">
       <div class="section__head center">
-        <span class="kicker">Nossa equipe</span>
+        <span class="eyebrow">Nossa equipe</span>
         <h2 class="section__title">Barbeiros especialistas ao seu dispor</h2>
         <p class="section__sub">Profissionais certificados e apaixonados pelo ofício.</p>
       </div>
-      <div class="roster">
-        <div class="barber reveal"><div class="barber__photo"><img src="https://images.pexels.com/photos/7747337/pexels-photo-7747337.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop" alt="Rafael Souza, barbeiro especialista em cortes clássicos" loading="lazy" width="300" height="300" /></div><h3>Rafael Souza</h3><span>cortes clássicos</span></div>
-        <div class="barber reveal reveal--delay-1"><div class="barber__photo"><img src="https://images.pexels.com/photos/8758985/pexels-photo-8758985.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop" alt="Bruno Lima, barbeiro especialista em barba" loading="lazy" width="300" height="300" /></div><h3>Bruno Lima</h3><span>barba e navalha</span></div>
-        <div class="barber reveal reveal--delay-2"><div class="barber__photo"><img src="https://images.pexels.com/photos/18483778/pexels-photo-18483778.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop" alt="Diego Alves, barbeiro especialista em degradê" loading="lazy" width="300" height="300" /></div><h3>Diego Alves</h3><span>degradê</span></div>
-        <div class="barber reveal"><div class="barber__photo"><img src="https://images.pexels.com/photos/4009085/pexels-photo-4009085.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop" alt="Marcos Prado, barbeiro especialista em coloração" loading="lazy" width="300" height="300" /></div><h3>Marcos Prado</h3><span>coloração</span></div>
+      <div class="team">
+        <div class="team__member reveal">
+          <div class="team__figure"><img src="https://images.pexels.com/photos/7747337/pexels-photo-7747337.jpeg?auto=compress&cs=tinysrgb&w=480&h=640&fit=crop" alt="Rafael Souza, barbeiro especialista em cortes clássicos" loading="lazy" width="480" height="640" /></div>
+          <h3>Rafael Souza</h3><span>Cortes clássicos</span>
+        </div>
+        <div class="team__member reveal reveal--delay-1">
+          <div class="team__figure"><img src="https://images.pexels.com/photos/8758985/pexels-photo-8758985.jpeg?auto=compress&cs=tinysrgb&w=480&h=640&fit=crop" alt="Bruno Lima, barbeiro especialista em barba" loading="lazy" width="480" height="640" /></div>
+          <h3>Bruno Lima</h3><span>Barba e navalha</span>
+        </div>
+        <div class="team__member reveal reveal--delay-2">
+          <div class="team__figure"><img src="https://images.pexels.com/photos/18483778/pexels-photo-18483778.jpeg?auto=compress&cs=tinysrgb&w=480&h=640&fit=crop" alt="Diego Alves, barbeiro especialista em degradê" loading="lazy" width="480" height="640" /></div>
+          <h3>Diego Alves</h3><span>Degradê</span>
+        </div>
+        <div class="team__member reveal">
+          <div class="team__figure"><img src="https://images.pexels.com/photos/4009085/pexels-photo-4009085.jpeg?auto=compress&cs=tinysrgb&w=480&h=640&fit=crop" alt="Marcos Prado, barbeiro especialista em coloração" loading="lazy" width="480" height="640" /></div>
+          <h3>Marcos Prado</h3><span>Coloração</span>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- GALERIA -->
-  <section class="section section--panel" id="galeria">
-    <div class="wrap">
+  <section class="section section--dark" id="galeria">
+    <div class="wrap wrap--wide">
       <div class="section__head center">
-        <span class="kicker">Galeria</span>
+        <span class="eyebrow">Galeria</span>
         <h2 class="section__title">Conheça o nosso espaço</h2>
       </div>
-      <div class="gallery reveal">
-        <a href="https://images.unsplash.com/photo-1759134248487-e8baaf31e33e?auto=format&fit=crop&w=900&h=900&q=80" target="_blank" rel="noopener"><img src="https://images.unsplash.com/photo-1759134248487-e8baaf31e33e?auto=format&fit=crop&w=400&h=400&q=80" alt="Ambiente interno da barbearia" loading="lazy" width="400" height="400" /></a>
-        <a href="https://images.unsplash.com/photo-1675599193990-33d71150902b?auto=format&fit=crop&w=900&h=900&q=80" target="_blank" rel="noopener"><img src="https://images.unsplash.com/photo-1675599193990-33d71150902b?auto=format&fit=crop&w=400&h=400&q=80" alt="Estação de corte com espelho e cadeira de barbeiro" loading="lazy" width="400" height="400" /></a>
-        <a href="https://images.unsplash.com/photo-1770253980732-dfed1cfdfa43?auto=format&fit=crop&w=900&h=900&q=80" target="_blank" rel="noopener"><img src="https://images.unsplash.com/photo-1770253980732-dfed1cfdfa43?auto=format&fit=crop&w=400&h=400&q=80" alt="Cliente durante corte de cabelo" loading="lazy" width="400" height="400" /></a>
-        <a href="https://images.pexels.com/photos/3998417/pexels-photo-3998417.jpeg?auto=compress&cs=tinysrgb&w=900&h=900&fit=crop" target="_blank" rel="noopener"><img src="https://images.pexels.com/photos/3998417/pexels-photo-3998417.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop" alt="Detalhe de acabamento de barba" loading="lazy" width="400" height="400" /></a>
+      <div class="gallery__grid">
+        <a href="https://images.unsplash.com/photo-1672257493395-c6cb634397e2?auto=format&fit=crop&w=1400&h=1400&q=80" target="_blank" rel="noopener" aria-label="Ver imagem ampliada do interior da barbearia">
+          <img src="https://images.unsplash.com/photo-1672257493395-c6cb634397e2?auto=format&fit=crop&w=800&h=800&q=80" alt="Interior da Barbearia Nobre" loading="lazy" data-speed="0.06" />
+        </a>
+        <a href="https://images.unsplash.com/photo-1759134248487-e8baaf31e33e?auto=format&fit=crop&w=1400&h=1400&q=80" target="_blank" rel="noopener" aria-label="Ver imagem ampliada do ambiente interno">
+          <img src="https://images.unsplash.com/photo-1759134248487-e8baaf31e33e?auto=format&fit=crop&w=800&h=800&q=80" alt="Ambiente interno da barbearia" loading="lazy" data-speed="0.1" />
+        </a>
+        <a href="https://images.unsplash.com/photo-1675599193990-33d71150902b?auto=format&fit=crop&w=1400&h=1400&q=80" target="_blank" rel="noopener" aria-label="Ver imagem ampliada da estação de corte">
+          <img src="https://images.unsplash.com/photo-1675599193990-33d71150902b?auto=format&fit=crop&w=800&h=800&q=80" alt="Estação de corte com espelho e cadeira de barbeiro" loading="lazy" data-speed="0.08" />
+        </a>
+        <a href="https://images.unsplash.com/photo-1770253980732-dfed1cfdfa43?auto=format&fit=crop&w=1400&h=1400&q=80" target="_blank" rel="noopener" aria-label="Ver imagem ampliada de cliente durante corte">
+          <img src="https://images.unsplash.com/photo-1770253980732-dfed1cfdfa43?auto=format&fit=crop&w=800&h=800&q=80" alt="Cliente durante corte de cabelo" loading="lazy" data-speed="0.12" />
+        </a>
+        <a href="https://images.pexels.com/photos/3998417/pexels-photo-3998417.jpeg?auto=compress&cs=tinysrgb&w=1400&h=1400&fit=crop" target="_blank" rel="noopener" aria-label="Ver imagem ampliada de detalhe de acabamento de barba">
+          <img src="https://images.pexels.com/photos/3998417/pexels-photo-3998417.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop" alt="Detalhe de acabamento de barba" loading="lazy" data-speed="0.07" />
+        </a>
       </div>
     </div>
   </section>
 
   <!-- ANTES E DEPOIS -->
-  <section class="section" id="antes-depois">
+  <section class="section section--light" id="antes-depois">
     <div class="wrap">
       <div class="section__head center">
-        <span class="kicker">Resultados reais</span>
+        <span class="eyebrow">Resultados reais</span>
         <h2 class="section__title">Antes e depois</h2>
         <p class="section__sub">Arraste para o lado e veja a transformação.</p>
       </div>
       <div class="result-grid">
-        <div class="before-after reveal">
-          <img class="before-after__before" src="https://images.unsplash.com/photo-1568316280532-71d1baad0986?auto=format&fit=crop&w=700&h=560&q=80" alt="Cliente antes do corte" loading="lazy" />
-          <img class="before-after__after" src="https://images.pexels.com/photos/19456424/pexels-photo-19456424.jpeg?auto=compress&cs=tinysrgb&w=700&h=560&fit=crop" alt="Cliente depois do corte" loading="lazy" />
-          <span class="before-after__label before-after__label--before">Antes</span>
-          <span class="before-after__label before-after__label--after">Depois</span>
-          <input type="range" min="0" max="100" value="50" aria-label="Comparar antes e depois do corte" />
+        <div class="result-figure reveal">
+          <div class="before-after">
+            <img class="before-after__before" src="https://images.unsplash.com/photo-1568316280532-71d1baad0986?auto=format&fit=crop&w=700&h=560&q=80" alt="Cliente antes do corte" loading="lazy" />
+            <img class="before-after__after" src="https://images.pexels.com/photos/19456424/pexels-photo-19456424.jpeg?auto=compress&cs=tinysrgb&w=700&h=560&fit=crop" alt="Cliente depois do corte" loading="lazy" />
+            <span class="before-after__label before-after__label--before">Antes</span>
+            <span class="before-after__label before-after__label--after">Depois</span>
+            <input type="range" min="0" max="100" value="50" aria-label="Comparar antes e depois do corte" />
+          </div>
+          <span class="result-figure__caption">Corte Clássico</span>
         </div>
-        <div class="before-after reveal reveal--delay-1">
-          <img class="before-after__before" src="https://images.pexels.com/photos/15004155/pexels-photo-15004155.jpeg?auto=compress&cs=tinysrgb&w=700&h=560&fit=crop" alt="Cliente antes da barba" loading="lazy" />
-          <img class="before-after__after" src="https://images.pexels.com/photos/8350416/pexels-photo-8350416.jpeg?auto=compress&cs=tinysrgb&w=700&h=560&fit=crop" alt="Cliente depois da barba desenhada" loading="lazy" />
-          <span class="before-after__label before-after__label--before">Antes</span>
-          <span class="before-after__label before-after__label--after">Depois</span>
-          <input type="range" min="0" max="100" value="50" aria-label="Comparar antes e depois da barba" />
+        <div class="result-figure reveal reveal--delay-1">
+          <div class="before-after">
+            <img class="before-after__before" src="https://images.pexels.com/photos/15004155/pexels-photo-15004155.jpeg?auto=compress&cs=tinysrgb&w=700&h=560&fit=crop" alt="Cliente antes da barba" loading="lazy" />
+            <img class="before-after__after" src="https://images.pexels.com/photos/8350416/pexels-photo-8350416.jpeg?auto=compress&cs=tinysrgb&w=700&h=560&fit=crop" alt="Cliente depois da barba desenhada" loading="lazy" />
+            <span class="before-after__label before-after__label--before">Antes</span>
+            <span class="before-after__label before-after__label--after">Depois</span>
+            <input type="range" min="0" max="100" value="50" aria-label="Comparar antes e depois da barba" />
+          </div>
+          <span class="result-figure__caption">Barba Desenhada</span>
         </div>
       </div>
     </div>
   </section>
 
   <!-- PROVAS SOCIAIS -->
-  <section class="section section--panel" id="depoimentos">
+  <section class="section section--dark" id="depoimentos">
     <div class="wrap">
       <div class="section__head center">
-        <span class="kicker">Depoimentos</span>
+        <span class="eyebrow">Depoimentos</span>
         <h2 class="section__title">Quem passou pela Nobre recomenda</h2>
       </div>
-      <div class="stub-grid">
-        <div class="stub reveal">
-          <div class="stub__stars"><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i></div>
-          <p>"Melhor barbearia que já fui. Ambiente impecável e o Rafael entende exatamente o que eu quero."</p>
-          <div class="stub__who"><strong>Thiago Martins</strong><span>Cliente há 3 anos</span></div>
+      <div class="quotes reveal">
+        <div class="quote">
+          <span class="quote__mark">"</span>
+          <p>Melhor barbearia que já fui. Ambiente impecável e o Rafael entende exatamente o que eu quero.</p>
+          <div class="quote__who">
+            <div><strong>Thiago Martins</strong><span>Cliente há 3 anos</span></div>
+            <span class="quote__rating"><i data-lucide="star"></i> 5,0</span>
+          </div>
         </div>
-        <div class="stub reveal reveal--delay-1">
-          <div class="stub__stars"><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i></div>
-          <p>"Atendimento de outro nível. Peço hora marcada pelo WhatsApp e nunca esperei mais de 5 minutos."</p>
-          <div class="stub__who"><strong>Eduardo Ramos</strong><span>Cliente há 1 ano</span></div>
+        <div class="quote">
+          <span class="quote__mark">"</span>
+          <p>Atendimento de outro nível. Peço hora marcada pelo WhatsApp e nunca esperei mais de 5 minutos.</p>
+          <div class="quote__who">
+            <div><strong>Eduardo Ramos</strong><span>Cliente há 1 ano</span></div>
+            <span class="quote__rating"><i data-lucide="star"></i> 5,0</span>
+          </div>
         </div>
-        <div class="stub reveal reveal--delay-2">
-          <div class="stub__stars"><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i></div>
-          <p>"A barba nunca ficou tão bem desenhada. Virei cliente fiel depois da primeira visita."</p>
-          <div class="stub__who"><strong>Felipe Costa</strong><span>Cliente há 6 meses</span></div>
+        <div class="quote">
+          <span class="quote__mark">"</span>
+          <p>A barba nunca ficou tão bem desenhada. Virei cliente fiel depois da primeira visita.</p>
+          <div class="quote__who">
+            <div><strong>Felipe Costa</strong><span>Cliente há 6 meses</span></div>
+            <span class="quote__rating"><i data-lucide="star"></i> 5,0</span>
+          </div>
         </div>
       </div>
       <div class="stats-bar reveal">
@@ -262,59 +332,82 @@
   </section>
 
   <!-- DIFERENCIAIS -->
-  <section class="section" id="diferenciais">
+  <section class="section section--light" id="diferenciais">
     <div class="wrap">
       <div class="section__head center">
-        <span class="kicker">Diferenciais</span>
+        <span class="eyebrow">Diferenciais</span>
         <h2 class="section__title">Por que escolher a Nobre</h2>
       </div>
       <div class="compare reveal">
-        <div class="compare__col compare__col--us">
-          <h3>Barbearia Nobre</h3>
-          <ul>
-            <li><i data-lucide="circle-check-big"></i> Agendamento sem espera pelo WhatsApp</li>
-            <li><i data-lucide="circle-check-big"></i> Barbeiros com formação internacional</li>
-            <li><i data-lucide="circle-check-big"></i> Produtos importados de alta performance</li>
-            <li><i data-lucide="circle-check-big"></i> Ambiente climatizado e exclusivo</li>
-            <li><i data-lucide="circle-check-big"></i> Cortesia de café ou whisky</li>
-          </ul>
+        <div class="compare__head"><span>Barbearia Nobre</span><span>Barbearias comuns</span></div>
+        <div class="compare__row">
+          <div class="is-us"><i data-lucide="check"></i> Agendamento sem espera pelo WhatsApp</div>
+          <div class="is-them"><i data-lucide="x"></i> Fila de espera sem horário marcado</div>
         </div>
-        <div class="compare__col compare__col--them">
-          <h3>Barbearias comuns</h3>
-          <ul>
-            <li><i data-lucide="circle-x"></i> Fila de espera sem horário marcado</li>
-            <li><i data-lucide="circle-x"></i> Equipe sem especialização contínua</li>
-            <li><i data-lucide="circle-x"></i> Produtos genéricos</li>
-            <li><i data-lucide="circle-x"></i> Ambiente sem climatização</li>
-            <li><i data-lucide="circle-x"></i> Sem cortesias no atendimento</li>
-          </ul>
+        <div class="compare__row">
+          <div class="is-us"><i data-lucide="check"></i> Barbeiros com formação internacional</div>
+          <div class="is-them"><i data-lucide="x"></i> Equipe sem especialização contínua</div>
+        </div>
+        <div class="compare__row">
+          <div class="is-us"><i data-lucide="check"></i> Produtos importados de alta performance</div>
+          <div class="is-them"><i data-lucide="x"></i> Produtos genéricos</div>
+        </div>
+        <div class="compare__row">
+          <div class="is-us"><i data-lucide="check"></i> Ambiente climatizado e exclusivo</div>
+          <div class="is-them"><i data-lucide="x"></i> Ambiente sem climatização</div>
+        </div>
+        <div class="compare__row">
+          <div class="is-us"><i data-lucide="check"></i> Cortesia de café ou whisky</div>
+          <div class="is-them"><i data-lucide="x"></i> Sem cortesias no atendimento</div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- PROCESSO -->
-  <section class="section section--panel" id="como-funciona">
+  <section class="section section--dark" id="como-funciona">
     <div class="wrap">
       <div class="section__head center">
-        <span class="kicker">Como funciona</span>
+        <span class="eyebrow">Como funciona</span>
         <h2 class="section__title">Do agendamento ao resultado, em 5 passos</h2>
       </div>
-      <div class="ritual reveal">
-        <div class="ritual__item"><span class="ritual__num">I</span><div><h3>Escolha o serviço</h3><p>Corte, barba ou combo — você decide o que precisa.</p></div></div>
-        <div class="ritual__item"><span class="ritual__num">II</span><div><h3>Escolha o barbeiro</h3><p>Selecione o profissional de sua preferência.</p></div></div>
-        <div class="ritual__item"><span class="ritual__num">III</span><div><h3>Agende o horário</h3><p>Confirmação rápida direto pelo WhatsApp.</p></div></div>
-        <div class="ritual__item"><span class="ritual__num">IV</span><div><h3>Compareça na Nobre</h3><p>Chegue e aproveite a experiência premium.</p></div></div>
-        <div class="ritual__item"><span class="ritual__num">V</span><div><h3>Saia renovado</h3><p>Resultado impecável e autoestima lá em cima.</p></div></div>
+      <div class="process reveal">
+        <div class="process__step"><span class="process__num">I</span><h3>Escolha o serviço</h3><p>Corte, barba ou combo — você decide o que precisa.</p></div>
+        <div class="process__step"><span class="process__num">II</span><h3>Escolha o barbeiro</h3><p>Selecione o profissional de sua preferência.</p></div>
+        <div class="process__step"><span class="process__num">III</span><h3>Agende o horário</h3><p>Confirmação rápida direto pelo WhatsApp.</p></div>
+        <div class="process__step"><span class="process__num">IV</span><h3>Compareça na Nobre</h3><p>Chegue e aproveite a experiência premium.</p></div>
+        <div class="process__step"><span class="process__num">V</span><h3>Saia renovado</h3><p>Resultado impecável e autoestima lá em cima.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCALIZAÇÃO -->
+  <section class="section section--light" id="localizacao">
+    <div class="wrap location">
+      <div>
+        <span class="eyebrow">Localização</span>
+        <h2 class="section__title">Fácil de chegar, difícil de esquecer</h2>
+        <dl class="location__list">
+          <div><dt>Endereço</dt><dd>Rua Augusta, 1200 — São Paulo, SP</dd></div>
+          <div><dt>Horário</dt><dd>Seg. a Sáb.: 9h às 20h · Domingo: fechado</dd></div>
+          <div><dt>Contato</dt><dd>(11) 99999-9999</dd></div>
+        </dl>
+        <div class="location__actions">
+          <a href="https://www.google.com/maps/search/?api=1&query=Rua+Augusta%2C+1200%2C+S%C3%A3o+Paulo%2C+SP%2C+01305-100" class="btn btn--ghost-light" target="_blank" rel="noopener"><i data-lucide="map-pin"></i> Abrir no mapa</a>
+          <a href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Quero%20agendar%20um%20hor%C3%A1rio%20na%20Barbearia%20Nobre." class="btn btn--clay" target="_blank" rel="noopener"><i data-lucide="message-circle"></i> Agendar pelo WhatsApp</a>
+        </div>
+      </div>
+      <div class="location__figure reveal">
+        <img src="https://images.unsplash.com/photo-1759134248487-e8baaf31e33e?auto=format&fit=crop&w=800&h=1000&q=80" alt="Fachada e ambiente interno da Barbearia Nobre" loading="lazy" width="800" height="1000" />
       </div>
     </div>
   </section>
 
   <!-- FAQ -->
-  <section class="section" id="faq">
+  <section class="section section--light" id="faq">
     <div class="wrap">
       <div class="section__head center">
-        <span class="kicker">Dúvidas frequentes</span>
+        <span class="eyebrow">Dúvidas frequentes</span>
         <h2 class="section__title">Perguntas frequentes</h2>
       </div>
       <div class="faq">
@@ -351,11 +444,15 @@
   </section>
 
   <!-- CTA FINAL -->
-  <section class="section section--panel" id="contato">
-    <div class="wrap final-cta reveal">
-      <h2>Pronto para elevar o seu estilo?</h2>
-      <p>Agende agora seu horário na Barbearia Nobre e sinta a diferença de um atendimento premium.</p>
-      <a href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Quero%20agendar%20um%20hor%C3%A1rio%20na%20Barbearia%20Nobre." class="btn btn--light btn--lg" target="_blank" rel="noopener">
+  <section class="cta-final" id="contato">
+    <div class="cta-final__media" data-cta-media>
+      <img src="https://images.pexels.com/photos/3998417/pexels-photo-3998417.jpeg?auto=compress&cs=tinysrgb&w=1800&h=1400&fit=crop" alt="Detalhe de acabamento de barba na Barbearia Nobre" loading="lazy" />
+    </div>
+    <div class="cta-final__scrim"></div>
+    <div class="wrap cta-final__content">
+      <h2>Seu próximo corte merece a Nobre.</h2>
+      <p>Agende agora seu horário e sinta a diferença de um atendimento premium, do primeiro café ao último detalhe.</p>
+      <a href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Quero%20agendar%20um%20hor%C3%A1rio%20na%20Barbearia%20Nobre." class="btn btn--paper btn--lg" target="_blank" rel="noopener">
         <i data-lucide="message-circle"></i> Agendar pelo WhatsApp
       </a>
     </div>
@@ -378,7 +475,7 @@
         <h4>Navegação</h4>
         <ul>
           <li><a href="#servicos">Serviços</a></li>
-          <li><a href="#barbeiros">Barbeiros</a></li>
+          <li><a href="#equipe">Barbeiros</a></li>
           <li><a href="#galeria">Galeria</a></li>
           <li><a href="#faq">Dúvidas</a></li>
         </ul>
@@ -412,5 +509,6 @@
 
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 <script src="../_shared/base.js"></script>
+<script src="motion.js"></script>
 </body>
 </html>
