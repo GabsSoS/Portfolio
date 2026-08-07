@@ -1,0 +1,407 @@
+/* ==========================================================================
+   HOME — direção de arte exclusiva da página principal do portfólio.
+   Carrega DEPOIS de _shared/base.css e só se aplica ao index.html raiz.
+   Não editar _shared/base.css aqui. As páginas internas de cada nicho não
+   referenciam este arquivo e não são afetadas por nada aqui.
+
+   CONCEITO — "Ficha técnica / desenho de construção"
+   O portfólio de um dev que constrói sites para negócios reais é tratado
+   como um documento técnico: papel claro, tinta escura, réguas finas em
+   vez de sombra/cartão, marcas de registro (+) em vez de glow, anotações
+   monoespaçadas em vez de badges, uma cor de sinalização usada com
+   extrema economia. Nada de fundo escuro + roxo neon + glassmorphism.
+   ========================================================================== */
+
+:root {
+  /* Paleta — papel e tinta, um sinal de precisão */
+  --paper: #f3efe6;
+  --paper-alt: #eae3d3;
+  --ink: #17140f;
+  --ink-soft: #5d5748;
+  --rule: rgba(23, 20, 15, 0.16);
+  --rule-strong: rgba(23, 20, 15, 0.32);
+  --signal: #c33a17;
+  --signal-ink: #f3efe6;
+
+  --color-bg: var(--paper);
+  --color-bg-alt: var(--paper-alt);
+  --color-surface: var(--paper);
+  --color-text: var(--ink);
+  --color-text-muted: var(--ink-soft);
+  --color-primary: var(--signal);
+  --color-primary-dark: #9c2e11;
+  --color-primary-contrast: var(--signal-ink);
+  --color-secondary: var(--ink);
+  --color-border: var(--rule);
+
+  --font-display: "Fraunces", "Poppins", serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "Space Mono", "IBM Plex Mono", monospace;
+
+  --container-width: 1320px;
+  --gutter: clamp(1.25rem, 1rem + 1.5vw, 2.75rem);
+  --header-height: 80px;
+}
+
+body { background: var(--paper); color: var(--ink); }
+
+[id] { scroll-margin-top: calc(var(--header-height) + 12px); }
+::selection { background: var(--ink); color: var(--paper); }
+
+.container { max-width: var(--container-width); padding-inline: var(--gutter); }
+
+/* ---------- Marcas de registro (motivo recorrente) ---------- */
+.mark { position: relative; width: 13px; height: 13px; flex-shrink: 0; }
+.mark::before,
+.mark::after { content: ""; position: absolute; background: var(--ink-soft); }
+.mark::before { top: 50%; left: 0; width: 100%; height: 1px; transform: translateY(-50%); }
+.mark::after { left: 50%; top: 0; height: 100%; width: 1px; transform: translateX(-50%); }
+.mark--signal::before,
+.mark--signal::after { background: var(--signal); }
+
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--ink-soft);
+}
+.label--eyebrow { margin-bottom: var(--space-3); }
+
+/* ---------- Barra de progresso — traço fino de régua ---------- */
+.scroll-progress { position: fixed; top: 0; left: 0; height: 2px; width: 100%; background: var(--signal); transform: scaleX(0); transform-origin: left; z-index: 200; }
+
+/* ---------- Header ---------- */
+.header { background: transparent; backdrop-filter: none; border-bottom: 1px solid transparent; height: var(--header-height); transition: background 0.4s var(--ease), border-color 0.4s var(--ease); }
+.header.is-scrolled { background: color-mix(in srgb, var(--paper) 92%, transparent); border-bottom-color: var(--rule); backdrop-filter: blur(6px); }
+
+.nav__logo { gap: 0.6rem; color: var(--ink); font-family: var(--font-mono); font-weight: 700; font-size: 0.85rem; letter-spacing: 0.02em; text-transform: uppercase; }
+.nav__logo .mark { margin-right: 0.1rem; }
+@media (max-width: 420px) { .nav__logo-text { display: none; } }
+
+.nav__links { position: relative; gap: var(--space-5); font-family: var(--font-mono); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; }
+.nav__links a { position: relative; color: var(--ink-soft); }
+.nav__links a::before { content: "·"; margin-right: 0.35rem; color: var(--signal); opacity: 0; transition: opacity 0.25s var(--ease); }
+.nav__links a:hover,
+.nav__links a.is-active { color: var(--ink); }
+.nav__links a:hover::before,
+.nav__links a.is-active::before { opacity: 1; }
+
+/* Indicador que desliza até o link ativo (GSAP: home-motion.js). Sem
+   GSAP/JS, fica com width:0 — nunca chega a aparecer, sem prejuízo. */
+.nav__indicator { position: absolute; bottom: -7px; left: 0; height: 1px; width: 0; background: var(--signal); pointer-events: none; }
+
+@media (max-width: 900px) {
+  .nav__links { background: var(--paper); border-left: 1px solid var(--rule); font-size: 1rem; }
+  .nav__indicator { display: none; }
+}
+
+/* ---------- Botões — sem gradiente, sem pílula, inversão no hover ---------- */
+.btn {
+  border-radius: 0;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.9rem 1.5rem;
+  transition: background-color 0.3s var(--ease), color 0.3s var(--ease), border-color 0.3s var(--ease);
+}
+.btn--primary { background: var(--ink); color: var(--paper); border: 1px solid var(--ink); box-shadow: none; }
+.btn--primary:hover { background: transparent; color: var(--ink); transform: none; box-shadow: none; }
+.btn--outline { background: transparent; border: 1px solid var(--ink); color: var(--ink); }
+.btn--outline:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); transform: none; }
+.btn--lg { padding: 1.05rem 1.9rem; font-size: 0.82rem; }
+
+/* Link com seta — usado em várias seções, cada uma com pequena variação */
+.arrow-link { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--font-mono); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink); }
+.arrow-link svg { width: 1em; height: 1em; transition: transform 0.3s var(--ease); }
+.arrow-link:hover svg,
+.arrow-link:focus-visible svg { transform: translate(3px, -3px); }
+
+/* Botões magnéticos (JS: home.js) */
+.magnetic { transition: transform 0.25s var(--ease); }
+
+/* ==========================================================================
+   HERO
+   ========================================================================== */
+.hero { position: relative; padding-top: clamp(6.5rem, 5rem + 5vw, 9.5rem); padding-bottom: var(--space-7); overflow: clip; }
+
+.hero__topbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 0.6rem 1.5rem;
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: clamp(2rem, 1.4rem + 3vw, 4rem);
+}
+.hero__topbar .label { font-size: 0.8rem; max-width: 62ch; }
+
+.hero__main { max-width: 920px; }
+
+.hero__headline {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2.4rem, 1.7rem + 4vw, 5.2rem);
+  line-height: 1.02;
+  letter-spacing: -0.01em;
+  margin-bottom: var(--space-5);
+}
+.hero__headline .flip {
+  display: inline-block;
+  font-style: italic;
+  transition: background-color 0.5s var(--ease) 0.3s, color 0.5s var(--ease) 0.3s, padding 0.5s var(--ease) 0.3s;
+  padding: 0 0.06em;
+}
+.hero__headline .flip.is-flipped { background: var(--ink); color: var(--paper); padding: 0 0.18em; border-radius: 2px; }
+
+/* Revelação do headline linha a linha — máscara + translateY, não fade.
+   Estado padrão: visível (progressive enhancement); .js-motion define o
+   estado inicial escondido que o home-motion.js anima para fora. */
+.line-mask { display: block; overflow: clip; padding-bottom: 0.08em; }
+.line-inner { display: block; transform: translateY(0); }
+.js-motion .line-inner { transform: translateY(112%); }
+
+.hero__subtitle { max-width: 56ch; color: var(--ink-soft); font-size: 1.1rem; margin-bottom: var(--space-5); }
+
+.hero__actions { display: flex; align-items: center; gap: var(--space-5); flex-wrap: wrap; }
+
+/* Estado inicial da coreografia de entrada (home-motion.js). Sem JS ou
+   com prefers-reduced-motion, .js-motion nunca é adicionada e tudo
+   abaixo permanece com opacity:1 / sem transform — conteúdo sempre
+   visível mesmo se o GSAP falhar ao carregar. */
+.js-motion .header { opacity: 0; }
+.js-motion .hero__topbar { opacity: 0; }
+
+/* ==========================================================================
+   SOBRE
+   ========================================================================== */
+.about__grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: var(--gutter); align-items: start; }
+@media (max-width: 900px) { .about__grid { grid-template-columns: 1fr; } }
+
+.about__lead {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.6rem, 1.2rem + 1.6vw, 2.4rem);
+  line-height: 1.25;
+  max-width: 26ch;
+  margin-bottom: var(--space-5);
+}
+.about__body p { color: var(--ink-soft); max-width: 58ch; margin-bottom: var(--space-3); }
+.about__note { margin-top: var(--space-5); font-family: var(--font-mono); font-size: 0.78rem; color: var(--ink-soft); letter-spacing: 0.04em; }
+.about__note strong { color: var(--ink); font-weight: 700; }
+
+.about__points { display: flex; flex-direction: column; }
+.about__point { display: grid; grid-template-columns: 2.5rem 1fr; gap: 1rem; padding-block: var(--space-3); border-top: 1px solid var(--rule); }
+.about__point:last-child { border-bottom: 1px solid var(--rule); }
+.about__point-num { font-family: var(--font-mono); font-size: 0.78rem; color: var(--signal); }
+.about__point p { margin: 0; font-size: 0.95rem; color: var(--ink-soft); }
+.about__point strong { display: block; color: var(--ink); font-family: var(--font-body); font-weight: 700; margin-bottom: 0.2rem; }
+
+/* ==========================================================================
+   PROJETOS — mesma composição de card para os 10, peso igual entre eles;
+   só a cor de identidade (--tag) e o conteúdo mudam.
+   ========================================================================== */
+.projects__intro { display: flex; justify-content: space-between; align-items: flex-end; gap: var(--space-4); margin-bottom: clamp(2.5rem, 2rem + 2vw, 4rem); flex-wrap: wrap; }
+.projects__title { font-family: var(--font-display); font-weight: 500; font-size: clamp(1.9rem, 1.5rem + 2vw, 3rem); max-width: 18ch; margin: 0; }
+.projects__intro p { max-width: 40ch; color: var(--ink-soft); margin: 0; }
+
+/* Projetos agrupados por segmento — cada grupo tem seu rótulo e sua
+   própria grade de cartões (idênticos entre si dentro e entre grupos). */
+.project-group { margin-bottom: clamp(2.5rem, 2rem + 2vw, 4rem); }
+.project-group:last-child { margin-bottom: 0; }
+.project-group__label {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ink-soft);
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: clamp(1.5rem, 1.2rem + 1vw, 2.25rem);
+}
+
+.projects__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: calc(var(--gutter) * 0.85) calc(var(--gutter) * 0.55); }
+@media (max-width: 980px) { .projects__grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px) { .projects__grid { grid-template-columns: 1fr; gap: var(--space-6); max-width: 340px; margin-inline: auto; } }
+
+/* O cartão inteiro é o link (âncora em volta de tudo — ver index.html);
+   por isso .project-card__cta é um <span> decorativo, não um <a> aninhado. */
+.project-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  color: var(--ink);
+  border-top: 1px solid transparent;
+  transition: border-color 0.55s var(--ease);
+  will-change: transform;
+}
+.project-card:hover,
+.project-card:focus-visible { border-top-color: var(--tag, var(--signal)); }
+
+/* Preview real da home de cada projeto — mesma técnica usada antes só na
+   Barbearia, agora em todos: iframe reduzido dentro de uma janela com
+   barra de navegador, sem interceptar cliques (o card é o link). */
+.project-preview {
+  display: flex;
+  flex-direction: column;
+  aspect-ratio: 4 / 2.8;
+  border: 1px solid var(--ink);
+  overflow: hidden;
+  margin-bottom: var(--space-2);
+  background: var(--paper-alt);
+  transition: box-shadow 0.55s var(--ease);
+}
+.project-card:hover .project-preview,
+.project-card:focus-visible .project-preview { box-shadow: 0 14px 32px rgba(23, 20, 15, 0.12); }
+
+.project-preview__bar { flex-shrink: 0; display: flex; align-items: center; gap: 0.35rem; padding: 0.5rem 0.6rem; border-bottom: 1px solid var(--rule); background: var(--paper); }
+.project-preview__bar span { width: 7px; height: 7px; border-radius: 50%; border: 1px solid var(--ink-soft); }
+.project-preview__bar em { flex: 1; min-width: 0; margin-left: 0.4rem; font-style: normal; font-family: var(--font-mono); font-size: 0.62rem; color: var(--ink-soft); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+.project-preview__frame { position: relative; flex: 1; overflow: hidden; background: var(--paper-alt); }
+.project-preview__frame iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(100% / 0.3);
+  height: calc(100% / 0.3);
+  transform: scale(0.3);
+  transform-origin: top left;
+  border: 0;
+  pointer-events: none;
+  transition: transform 0.85s var(--ease);
+}
+.project-card:hover .project-preview__frame iframe,
+.project-card:focus-visible .project-preview__frame iframe { transform: scale(0.315); }
+
+.project-card__body { display: flex; flex-direction: column; flex: 1; }
+.project-card__index { font-family: var(--font-mono); font-size: 0.68rem; color: var(--signal); display: block; margin-bottom: 0.35rem; }
+.project-card h3 { font-family: var(--font-display); font-weight: 500; font-size: 1.15rem; margin-bottom: 0.6rem; transition: color 0.55s var(--ease); }
+.project-card:hover h3,
+.project-card:focus-visible h3 { color: var(--tag, var(--signal)); }
+.project-card__cta { margin-top: auto; font-size: 0.75rem; }
+.project-card__cta svg { width: 1em; height: 1em; color: var(--ink-soft); transition: transform 0.55s var(--ease), color 0.55s var(--ease); }
+.project-card:hover .project-card__cta svg,
+.project-card:focus-visible .project-card__cta svg { transform: translate(3px, -3px); color: var(--tag, var(--signal)); }
+
+/* ==========================================================================
+   SERVIÇOS — lista comercial, não três cards iguais
+   ========================================================================== */
+.services__intro { max-width: 34ch; margin-bottom: clamp(2rem, 1.5rem + 2vw, 3.5rem); }
+.services__intro h2 { font-family: var(--font-display); font-weight: 500; font-size: clamp(1.8rem, 1.4rem + 1.8vw, 2.7rem); margin: 0; }
+
+.service-row { position: relative; display: grid; grid-template-columns: 4rem 1fr 1fr; gap: var(--gutter); align-items: baseline; padding-block: clamp(1.5rem, 1.2rem + 1vw, 2.2rem); border-top: 1px solid var(--rule); overflow: hidden; }
+.services__list .service-row:last-child { border-bottom: 1px solid var(--rule); }
+.service-row__num { font-family: var(--font-mono); font-size: 0.85rem; color: var(--ink-soft); }
+.service-row__title { font-family: var(--font-display); font-weight: 500; font-size: clamp(1.3rem, 1.1rem + 1vw, 1.9rem); transition: color 0.3s var(--ease); }
+.service-row__desc { color: var(--ink-soft); max-width: 48ch; margin: 0; }
+.service-row:hover .service-row__title,
+.service-row:focus-within .service-row__title { color: var(--signal); }
+@media (max-width: 760px) {
+  .service-row { grid-template-columns: 2.5rem 1fr; }
+  .service-row__desc { grid-column: 1 / -1; }
+}
+
+/* ==========================================================================
+   PROCESSO — sequência vertical com linha que se desenha no scroll
+   ========================================================================== */
+.process { position: relative; max-width: 760px; }
+.process__line { position: absolute; top: 0.4rem; bottom: 0.4rem; left: calc(3rem + 0.5px); width: 1px; background: var(--rule); }
+.process__line-fill { position: absolute; top: 0; left: 0; width: 100%; height: 0%; background: var(--signal); transform-origin: top; }
+.process-step { position: relative; display: grid; grid-template-columns: 6rem 1fr; gap: var(--space-4); padding-block: clamp(1.4rem, 1.1rem + 1vw, 2rem); }
+.process-step::before {
+  /* Marcador ancorado nas mesmas coordenadas de .process__line (não no
+     texto do número, que tem largura variável) — sempre alinhado. */
+  content: "";
+  position: absolute;
+  left: calc(3rem - 3px);
+  top: 1.7rem;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--paper);
+  border: 1.5px solid var(--rule-strong);
+  transition: background-color 0.3s var(--ease), border-color 0.3s var(--ease);
+}
+.process-step.is-active::before { border-color: var(--signal); background: var(--signal); }
+.process-step__num { font-family: var(--font-mono); font-size: 0.8rem; color: var(--ink-soft); }
+.process-step h3 { font-family: var(--font-display); font-weight: 500; font-size: 1.3rem; margin-bottom: 0.3rem; }
+.process-step p { color: var(--ink-soft); margin: 0; max-width: 48ch; }
+@media (max-width: 560px) {
+  .process__line { left: 1.6rem; }
+  .process-step { grid-template-columns: 3rem 1fr; }
+  .process-step::before { left: calc(1.6rem - 3px); }
+}
+
+/* ==========================================================================
+   CTA FINAL
+   ========================================================================== */
+.cta-final { position: relative; padding-block: clamp(4rem, 3rem + 4vw, 7rem); border-top: 1px solid var(--rule); }
+.cta-final__corner { position: absolute; }
+.cta-final__corner--tl { top: clamp(1.5rem, 1rem + 2vw, 3rem); left: var(--gutter); }
+.cta-final__corner--br { bottom: clamp(1.5rem, 1rem + 2vw, 3rem); right: var(--gutter); }
+.cta-final__inner { max-width: 900px; }
+.cta-final h2 { font-family: var(--font-display); font-weight: 500; font-size: clamp(2rem, 1.5rem + 3vw, 4rem); line-height: 1.08; margin-bottom: var(--space-4); }
+.cta-final p { color: var(--ink-soft); max-width: 50ch; margin-bottom: var(--space-5); font-size: 1.05rem; }
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+.footer { background: var(--paper); color: var(--ink-soft); border-top: 1px solid var(--rule); padding-block: var(--space-6) var(--space-4); }
+.footer h4 { color: var(--ink); font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; }
+.footer__grid { grid-template-columns: 1.4fr 1fr 1fr; border-bottom-color: var(--rule); }
+@media (max-width: 800px) { .footer__grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 480px) { .footer__grid { grid-template-columns: 1fr; } }
+.footer__brand { color: var(--ink); font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.04em; font-size: 0.95rem; }
+.footer__contact svg { color: var(--signal); }
+.footer__bottom { color: var(--ink-soft); font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; }
+.footer__bottom a { color: var(--ink-soft); }
+.footer__bottom a:hover { color: var(--ink); }
+.footer a:hover { color: var(--ink); }
+
+/* ==========================================================================
+   MOTION HOOKS (home-motion.js / GSAP)
+   home.js/base.js NÃO tocam nestas classes — evita dois sistemas de
+   scroll-reveal competindo pelo mesmo elemento. Cada variante é uma
+   técnica diferente (clip / mask / slide / scale), nunca só fade-up.
+   Estado inicial em CSS (funciona mesmo se o GSAP falhar ao carregar);
+   o JS só anima a transição para o estado final.
+   ========================================================================== */
+[data-reveal] { opacity: 1; }
+
+[data-reveal="clip"] { clip-path: inset(0 0 0 0); }
+.js-motion [data-reveal="clip"] { clip-path: inset(0 0 100% 0); }
+
+[data-reveal="fade"] { opacity: 1; transform: none; }
+.js-motion [data-reveal="fade"] { opacity: 0; transform: translateY(18px); }
+
+[data-reveal="slide"] { opacity: 1; transform: none; }
+.js-motion [data-reveal="slide"] { opacity: 0; transform: translateX(-28px); }
+
+[data-reveal="scale"] { opacity: 1; transform: none; }
+.js-motion [data-reveal="scale"] { opacity: 0; transform: scale(0.92); }
+
+[data-reveal="clip-x"] { clip-path: inset(0% 0% 0% 0%); }
+.js-motion [data-reveal="clip-x"] { clip-path: inset(0% 100% 0% 0%); }
+
+@media (prefers-reduced-motion: reduce) {
+  /* Rede de segurança: cobre também quem alterna a preferência do SO
+     com a aba já aberta (a checagem em <head> só roda uma vez, no
+     carregamento). Tudo aqui fica garantidamente visível. */
+  .hero__headline .flip { transition: none; }
+  .js-motion [data-reveal],
+  .js-motion .header,
+  .js-motion .hero__topbar,
+  .js-motion .line-inner {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+  }
+}

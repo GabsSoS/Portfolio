@@ -3,118 +3,434 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Vitrine de Landing Pages por Nicho</title>
-<meta name="description" content="Vitrine com 10 landing pages profissionais, uma para cada nicho de negócio, prontas para personalizar e publicar." />
-<meta name="robots" content="noindex, nofollow" />
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🗂️</text></svg>" />
+<title>.Landing | Estúdio de Sites & Landing Pages</title>
+<meta name="description" content=".Landing é um estúdio front-end. Projetamos e construímos landing pages e websites sob medida para negócios, com identidade própria por segmento — linha a linha." />
+<meta name="robots" content="index, follow" />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content=".Landing | Estúdio de Sites & Landing Pages" />
+<meta property="og:description" content=".Landing constrói landing pages e websites sob medida para negócios — identidade própria por segmento, sem templates genéricos." />
+<meta property="og:locale" content="pt_BR" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content=".Landing | Estúdio de Sites & Landing Pages" />
+<meta name="twitter:description" content=".Landing constrói landing pages e websites sob medida para negócios — identidade própria por segmento, sem templates genéricos." />
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>➕</text></svg>" />
+
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,500&family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
 <link rel="stylesheet" href="_shared/base.css" />
-<style>
-  :root {
-    --color-primary: #4f46e5;
-    --color-primary-dark: #4338ca;
-    --color-secondary: #0f172a;
-    --font-heading: "Poppins", "Inter", sans-serif;
-  }
-  .index-hero { padding-block: var(--space-8) var(--space-6); text-align: center; background: linear-gradient(180deg, #f5f5ff 0%, #ffffff 100%); }
-  .index-hero h1 { font-size: clamp(2rem, 1.5rem + 2vw, 3rem); margin-bottom: var(--space-3); }
-  .index-hero p { max-width: 640px; margin-inline: auto; color: var(--color-text-muted); font-size: 1.1rem; }
-  .category { padding-block: var(--space-6); }
-  .category h2 { font-size: 1.4rem; margin-bottom: var(--space-4); display: flex; align-items: center; gap: 0.6rem; }
-  .category h2 svg { width: 1.3rem; height: 1.3rem; color: var(--color-primary); }
-  .niche-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-4); }
-  @media (max-width: 980px) { .niche-grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 560px) { .niche-grid { grid-template-columns: 1fr; } }
-  .niche-card {
-    display: flex; flex-direction: column; gap: 0.5rem;
-    background: var(--color-surface); border: 1px solid var(--color-border);
-    border-radius: var(--radius-md); padding: var(--space-4);
-    transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), border-color 0.25s var(--ease);
-  }
-  .niche-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: transparent; }
-  .niche-card__dot { width: 12px; height: 12px; border-radius: 50%; }
-  .niche-card strong { font-family: var(--font-heading); font-size: 1rem; }
-  .niche-card span { font-size: 0.85rem; color: var(--color-text-muted); }
-  .niche-card .status { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; }
-  .status--ok { color: #16a34a; }
-</style>
+<link rel="stylesheet" href="home.css" />
+
+<script>
+  /* Define o estado inicial da coreografia ANTES da primeira pintura, pra
+     não haver flash de conteúdo visível-depois-escondido. home-motion.js
+     confirma no fim se o GSAP carregou; se não, remove a classe e tudo
+     volta a ficar visível (ver home.css). */
+  (function () {
+    try {
+      if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        document.documentElement.classList.add("js-motion");
+      }
+    } catch (e) {}
+  })();
+</script>
 </head>
 <body>
+<a href="#conteudo" class="skip-link">Pular para o conteúdo</a>
+<div class="scroll-progress" aria-hidden="true"></div>
+
 <header class="header">
   <div class="container nav">
-    <a href="#" class="nav__logo"><i data-lucide="layout-grid"></i> Vitrine de Nichos</a>
-    <nav class="nav__links" id="menu" aria-label="Categorias">
-      <a href="#saude">Saúde</a>
-      <a href="#corporativo">Corporativo</a>
-      <a href="#automotivo">Automotivo</a>
+    <a href="#topo" class="nav__logo" aria-label=".Landing — início">
+      <span class="mark" aria-hidden="true"></span> <span class="nav__logo-text">.Landing</span>
+    </a>
+    <nav class="nav__links" id="menu" aria-label="Navegação principal">
+      <a href="#sobre">Sobre</a>
+      <a href="#projetos">Projetos</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#processo">Processo</a>
+      <span class="nav__indicator" aria-hidden="true"></span>
     </nav>
     <div class="nav__actions">
+      <a href="#contato" class="btn btn--outline magnetic">Iniciar conversa</a>
       <button class="nav__toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu"><i data-lucide="menu"></i></button>
     </div>
   </div>
 </header>
 
 <main id="conteudo">
-  <section class="index-hero">
-    <div class="container">
-      <span class="kicker">10 landing pages · 1 motor compartilhado</span>
-      <h1>Vitrine de landing pages por nicho</h1>
-      <p>Cada card abaixo abre uma landing page completa (HTML/CSS/JS), com identidade visual própria.</p>
-    </div>
-  </section>
 
-  <section class="category" id="beleza">
+  <!-- ================= HERO ================= -->
+  <section class="hero" id="topo">
     <div class="container">
-      <h2><i data-lucide="scissors"></i> Beleza &amp; Estética</h2>
-      <div class="niche-grid">
-        <a class="niche-card" href="barbearia/index.html"><span class="niche-card__dot" style="background:#c9a227"></span><strong>Barbearia</strong><span>Luxuoso · preto e dourado</span></a>
+      <div class="hero__topbar">
+        <span class="label"><span class="mark" aria-hidden="true"></span> Estúdio Front-End · Landing Pages, Websites e Interfaces sob medida para o seu negócio</span>
+      </div>
+
+      <div class="hero__main">
+        <h1 class="hero__headline">
+          <span class="line-mask"><span class="line-inner">Cada negócio</span></span>
+          <span class="line-mask"><span class="line-inner">desenhado e construído</span></span>
+          <span class="line-mask"><span class="line-inner"><em class="flip">linha a linha</em>.</span></span>
+        </h1>
+        <p class="hero__subtitle" data-reveal="fade">Somos a .Landing, um estúdio front-end. Projetamos e construímos landing pages e websites para negócios que precisam de uma presença digital à altura do que oferecem — com identidade própria para cada segmento, sem templates genéricos.</p>
+        <div class="hero__actions" data-reveal="fade">
+          <a href="#contato" class="btn btn--primary btn--lg magnetic">Iniciar conversa</a>
+          <a href="#projetos" class="arrow-link">Ver trabalho <i data-lucide="arrow-up-right"></i></a>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="category section--alt" id="saude">
-    <div class="container">
-      <h2><i data-lucide="heart-pulse"></i> Saúde &amp; Bem-estar</h2>
-      <div class="niche-grid">
-        <a class="niche-card" href="clinica-odontologica/index.html"><span class="niche-card__dot" style="background:#2f6fed"></span><strong>Clínica Odontológica</strong><span>Limpo · confiável</span></a>
-        <a class="niche-card" href="psicologo/index.html"><span class="niche-card__dot" style="background:#6b8f71"></span><strong>Psicólogo</strong><span>Acolhedor · calmo</span></a>
-        <a class="niche-card" href="academia/index.html"><span class="niche-card__dot" style="background:#c6ff2f"></span><strong>Academia</strong><span>Energia · impacto</span></a>
-        <a class="niche-card" href="pet-shop/index.html"><span class="niche-card__dot" style="background:#2ec4b6"></span><strong>Pet Shop</strong><span>Divertido · colorido</span></a>
+  <!-- ================= SOBRE ================= -->
+  <section class="section" id="sobre">
+    <div class="container about__grid">
+      <div>
+        <span class="label label--eyebrow"><span class="mark" aria-hidden="true"></span> Sobre</span>
+        <p class="about__lead" data-reveal="clip-x">Cada projeto começa do zero — e termina com uma identidade que não existia antes.</p>
+        <div class="about__body">
+          <p>Somos a .Landing. Nosso trabalho é transformar um negócio em um site que representa o que ele realmente é: profissional, confiável e pronto para converter visitantes em clientes.</p>
+          <p>Em vez de reaproveitar o mesmo layout para todo mundo, construímos cada landing page com paleta, tipografia e composição próprias para o segmento do cliente — apoiado em um sistema de design testado em mais de uma dezena de páginas reais.</p>
+        </div>
+        <p class="about__note"><strong>Abordagem —</strong> um sistema de design, dez identidades diferentes.</p>
+      </div>
+
+      <div class="about__points">
+        <div class="about__point" data-reveal="slide">
+          <span class="about__point-num">01</span>
+          <p><strong>Design com propósito.</strong> Cada elemento existe para guiar o visitante até a ação — nada é decorativo por acaso.</p>
+        </div>
+        <div class="about__point" data-reveal="slide">
+          <span class="about__point-num">02</span>
+          <p><strong>Performance em primeiro lugar.</strong> Sites leves, que carregam rápido e funcionam bem em qualquer dispositivo — sem excesso de código.</p>
+        </div>
+        <div class="about__point" data-reveal="slide">
+          <span class="about__point-num">03</span>
+          <p><strong>Nenhum projeto igual ao outro.</strong> Identidade visual pensada para o segmento de cada negócio, não para um template.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="category" id="corporativo">
+  <!-- ================= PROJETOS ================= -->
+  <section class="section section--alt" id="projetos">
     <div class="container">
-      <h2><i data-lucide="briefcase"></i> Corporativo &amp; Serviços Profissionais</h2>
-      <div class="niche-grid">
-        <a class="niche-card" href="advogado/index.html"><span class="niche-card__dot" style="background:#b8912f"></span><strong>Advogado</strong><span>Corporativo · luxuoso</span></a>
-        <a class="niche-card" href="contabilidade/index.html"><span class="niche-card__dot" style="background:#145da0"></span><strong>Contabilidade</strong><span>Corporativo · moderno</span></a>
-        <a class="niche-card" href="arquitetura/index.html"><span class="niche-card__dot" style="background:#8a7259"></span><strong>Arquitetura</strong><span>Minimalista · premium</span></a>
+      <div class="projects__intro">
+        <h2 class="projects__title">Dez negócios. Dez identidades.</h2>
+        <p>Cada landing page foi construída para o segmento do cliente — com paleta, tipografia e composição próprias.</p>
+      </div>
+
+      <!-- Os 10 projetos, agrupados por segmento, usam exatamente o mesmo
+           cartão e o mesmo botão de acesso — nenhum é destacado sobre os
+           demais. Só a cor de identidade real do nicho (--tag) e o
+           conteúdo mudam. -->
+      <div class="projects__index">
+
+        <div class="project-group">
+          <div class="project-group__label" data-reveal="fade"><span class="mark" aria-hidden="true"></span> Beleza &amp; Estética</div>
+          <div class="projects__grid">
+          <a class="project-card" style="--tag:#c9a227" href="barbearia/index.html" target="_blank" rel="noopener" aria-label="Ver projeto: Barbearia Nobre">
+            <div class="project-preview" data-reveal="clip">
+              <div class="project-preview__bar">
+                <span></span><span></span><span></span>
+                <em>barbearia/index.html</em>
+              </div>
+              <div class="project-preview__frame">
+                <iframe src="barbearia/index.html" title="Prévia da home — Barbearia Nobre" loading="lazy" tabindex="-1" aria-hidden="true" sandbox="allow-scripts allow-same-origin"></iframe>
+              </div>
+            </div>
+            <div class="project-card__body" data-reveal="fade">
+              <span class="project-card__index">01 / 10</span>
+              <h3>Barbearia Nobre</h3>
+              <span class="arrow-link project-card__cta">Ver projeto <i data-lucide="arrow-up-right"></i></span>
+            </div>
+          </a>
+          </div>
+        </div>
+
+        <div class="project-group">
+          <div class="project-group__label" data-reveal="fade"><span class="mark" aria-hidden="true"></span> Saúde &amp; Bem-estar</div>
+          <div class="projects__grid">
+          <a class="project-card" style="--tag:#2f6fed" href="clinica-odontologica/index.html" target="_blank" rel="noopener" aria-label="Ver projeto: Sorriso Vitale">
+            <div class="project-preview" data-reveal="clip">
+              <div class="project-preview__bar">
+                <span></span><span></span><span></span>
+                <em>clinica-odontologica/index.html</em>
+              </div>
+              <div class="project-preview__frame">
+                <iframe src="clinica-odontologica/index.html" title="Prévia da home — Sorriso Vitale" loading="lazy" tabindex="-1" aria-hidden="true" sandbox="allow-scripts allow-same-origin"></iframe>
+              </div>
+            </div>
+            <div class="project-card__body" data-reveal="fade">
+              <span class="project-card__index">02 / 10</span>
+              <h3>Sorriso Vitale</h3>
+              <span class="arrow-link project-card__cta">Ver projeto <i data-lucide="arrow-up-right"></i></span>
+            </div>
+          </a>
+
+          <a class="project-card" style="--tag:#6b8f71" href="psicologo/index.html" target="_blank" rel="noopener" aria-label="Ver projeto: Espaço Acolher">
+            <div class="project-preview" data-reveal="clip">
+              <div class="project-preview__bar">
+                <span></span><span></span><span></span>
+                <em>psicologo/index.html</em>
+              </div>
+              <div class="project-preview__frame">
+                <iframe src="psicologo/index.html" title="Prévia da home — Espaço Acolher" loading="lazy" tabindex="-1" aria-hidden="true" sandbox="allow-scripts allow-same-origin"></iframe>
+              </div>
+            </div>
+            <div class="project-card__body" data-reveal="fade">
+              <span class="project-card__index">03 / 10</span>
+              <h3>Espaço Acolher</h3>
+              <span class="arrow-link project-card__cta">Ver projeto <i data-lucide="arrow-up-right"></i></span>
+            </div>
+          </a>
+
+          <a class="project-card" style="--tag:#c6ff2f" href="academia/index.html" target="_blank" rel="noopener" aria-label="Ver projeto: PulseFit Academia">
+            <div class="project-preview" data-reveal="clip">
+              <div class="project-preview__bar">
+                <span></span><span></span><span></span>
+                <em>academia/index.html</em>
+              </div>
+              <div class="project-preview__frame">
+                <iframe src="academia/index.html" title="Prévia da home — PulseFit Academia" loading="lazy" tabindex="-1" aria-hidden="true" sandbox="allow-scripts allow-same-origin"></iframe>
+              </div>
+            </div>
+            <div class="project-card__body" data-reveal="fade">
+              <span class="project-card__index">04 / 10</span>
+              <h3>PulseFit Academia</h3>
+              <span class="arrow-link project-card__cta">Ver projeto <i data-lucide="arrow-up-right"></i></span>
+            </div>
+          </a>
+
+          <a class="project-card" style="--tag:#2ec4b6" href="pet-shop/index.html" target="_blank" rel="noopener" aria-label="Ver projeto: Focinho Feliz">
+            <div class="project-preview" data-reveal="clip">
+              <div class="project-preview__bar">
+                <span></span><span></span><span></span>
+                <em>pet-shop/index.html</em>
+              </div>
+              <div class="project-preview__frame">
+                <iframe src="pet-shop/index.html" title="Prévia da home — Focinho Feliz" loading="lazy" tabindex="-1" aria-hidden="true" sandbox="allow-scripts allow-same-origin"></iframe>
+              </div>
+            </div>
+            <div class="project-card__body" data-reveal="fade">
+              <span class="project-card__index">05 / 10</span>
+              <h3>Focinho Feliz</h3>
+              <span class="arrow-link project-card__cta">Ver projeto <i data-lucide="arrow-up-right"></i></span>
+            </div>
+          </a>
+          </div>
+        </div>
+
+        <div class="project-group">
+          <div class="project-group__label" data-reveal="fade"><span class="mark" aria-hidden="true"></span> Corporativo &amp; Serviços Profissionais</div>
+          <div class="projects__grid">
+          <a class="project-card" style="--tag:#b8912f" href="advogado/index.html" target="_blank" rel="noopener" aria-label="Ver projeto: Almeida Prado Advocacia">
+            <div class="project-preview" data-reveal="clip">
+              <div class="project-preview__bar">
+                <span></span><span></span><span></span>
+                <em>advogado/index.html</em>
+              </div>
+              <div class="project-preview__frame">
+                <iframe src="advogado/index.html" title="Prévia da home — Almeida Prado Advocacia" loading="lazy" tabindex="-1" aria-hidden="true" sandbox="allow-scripts allow-same-origin"></iframe>
+              </div>
+            </div>
+            <div class="project-card__body" data-reveal="fade">
+              <span class="project-card__index">06 / 10</span>
+              <h3>Almeida Prado Advocacia</h3>
+              <span class="arrow-link project-card__cta">Ver projeto <i data-lucide="arrow-up-right"></i></span>
+            </div>
+          </a>
+
+          <a class="project-card" style="--tag:#145da0" href="contabilidade/index.html" target="_blank" rel="noopener" aria-label="Ver projeto: Prisma Contábil">
+            <div class="project-preview" data-reveal="clip">
+              <div class="project-preview__bar">
+                <span></span><span></span><span></span>
+                <em>contabilidade/index.html</em>
+              </div>
+              <div class="project-preview__frame">
+                <iframe src="contabilidade/index.html" title="Prévia da home — Prisma Contábil" loading="lazy" tabindex="-1" aria-hidden="true" sandbox="allow-scripts allow-same-origin"></iframe>
+              </div>
+            </div>
+            <div class="project-card__body" data-reveal="fade">
+              <span class="project-card__index">07 / 10</span>
+              <h3>Prisma Contábil</h3>
+              <span class="arrow-link project-card__cta">Ver projeto <i data-lucide="arrow-up-right"></i></span>
+            </div>
+          </a>
+
+          <a class="project-card" style="--tag:#8a7259" href="arquitetura/index.html" target="_blank" rel="noopener" aria-label="Ver projeto: Traço Vivo Arquitetura">
+            <div class="project-preview" data-reveal="clip">
+              <div class="project-preview__bar">
+                <span></span><span></span><span></span>
+                <em>arquitetura/index.html</em>
+              </div>
+              <div class="project-preview__frame">
+                <iframe src="arquitetura/index.html" title="Prévia da home — Traço Vivo Arquitetura" loading="lazy" tabindex="-1" aria-hidden="true" sandbox="allow-scripts allow-same-origin"></iframe>
+              </div>
+            </div>
+            <div class="project-card__body" data-reveal="fade">
+              <span class="project-card__index">08 / 10</span>
+              <h3>Traço Vivo Arquitetura</h3>
+              <span class="arrow-link project-card__cta">Ver projeto <i data-lucide="arrow-up-right"></i></span>
+            </div>
+          </a>
+          </div>
+        </div>
+
+        <div class="project-group">
+          <div class="project-group__label" data-reveal="fade"><span class="mark" aria-hidden="true"></span> Automotivo</div>
+          <div class="projects__grid">
+          <a class="project-card" style="--tag:#c1272d" href="mecanica/index.html" target="_blank" rel="noopener" aria-label="Ver projeto: TorqueMax Auto Center">
+            <div class="project-preview" data-reveal="clip">
+              <div class="project-preview__bar">
+                <span></span><span></span><span></span>
+                <em>mecanica/index.html</em>
+              </div>
+              <div class="project-preview__frame">
+                <iframe src="mecanica/index.html" title="Prévia da home — TorqueMax Auto Center" loading="lazy" tabindex="-1" aria-hidden="true" sandbox="allow-scripts allow-same-origin"></iframe>
+              </div>
+            </div>
+            <div class="project-card__body" data-reveal="fade">
+              <span class="project-card__index">09 / 10</span>
+              <h3>TorqueMax Auto Center</h3>
+              <span class="arrow-link project-card__cta">Ver projeto <i data-lucide="arrow-up-right"></i></span>
+            </div>
+          </a>
+
+          <a class="project-card" style="--tag:#0072ff" href="auto-eletrica/index.html" target="_blank" rel="noopener" aria-label="Ver projeto: VoltMax Auto Elétrica">
+            <div class="project-preview" data-reveal="clip">
+              <div class="project-preview__bar">
+                <span></span><span></span><span></span>
+                <em>auto-eletrica/index.html</em>
+              </div>
+              <div class="project-preview__frame">
+                <iframe src="auto-eletrica/index.html" title="Prévia da home — VoltMax Auto Elétrica" loading="lazy" tabindex="-1" aria-hidden="true" sandbox="allow-scripts allow-same-origin"></iframe>
+              </div>
+            </div>
+            <div class="project-card__body" data-reveal="fade">
+              <span class="project-card__index">10 / 10</span>
+              <h3>VoltMax Auto Elétrica</h3>
+              <span class="arrow-link project-card__cta">Ver projeto <i data-lucide="arrow-up-right"></i></span>
+            </div>
+          </a>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <section class="category section--alt" id="automotivo">
+  <!-- ================= SERVIÇOS ================= -->
+  <section class="section" id="servicos">
     <div class="container">
-      <h2><i data-lucide="car"></i> Automotivo</h2>
-      <div class="niche-grid">
-        <a class="niche-card" href="mecanica/index.html"><span class="niche-card__dot" style="background:#c1272d"></span><strong>Mecânica</strong><span>Robusto · profissional</span></a>
-        <a class="niche-card" href="auto-eletrica/index.html"><span class="niche-card__dot" style="background:#0072ff"></span><strong>Auto Elétrica</strong><span>Técnico · ágil</span></a>
+      <div class="services__intro">
+        <span class="label label--eyebrow"><span class="mark" aria-hidden="true"></span> Serviços</span>
+        <h2>O que posso construir pelo seu negócio?</h2>
+      </div>
+      <div class="services__list">
+        <div class="service-row" data-reveal="scale">
+          <span class="service-row__num">01</span>
+          <h3 class="service-row__title">Landing Pages</h3>
+          <p class="service-row__desc">Páginas de conversão para campanhas, lançamentos e captação de clientes — pensadas para performar desde o primeiro clique.</p>
+        </div>
+        <div class="service-row" data-reveal="scale">
+          <span class="service-row__num">02</span>
+          <h3 class="service-row__title">Websites</h3>
+          <p class="service-row__desc">Sites institucionais completos, construídos para transmitir credibilidade e profissionalismo desde o primeiro acesso.</p>
+        </div>
+        <div class="service-row" data-reveal="scale">
+          <span class="service-row__num">03</span>
+          <h3 class="service-row__title">Interfaces &amp; Experiência</h3>
+          <p class="service-row__desc">Interações e componentes que tornam a navegação fluida — sem exagerar no efeito.</p>
+        </div>
       </div>
     </div>
   </section>
+
+  <!-- ================= PROCESSO ================= -->
+  <section class="section section--alt" id="processo">
+    <div class="container">
+      <span class="label label--eyebrow"><span class="mark" aria-hidden="true"></span> Processo</span>
+      <div class="process">
+        <div class="process__line"><div class="process__line-fill"></div></div>
+
+        <div class="process-step">
+          <span class="process-step__num">01</span>
+          <div><h3>Descoberta</h3><p>Entendemos o negócio, o público e o objetivo da página antes de abrir o editor.</p></div>
+        </div>
+        <div class="process-step">
+          <span class="process-step__num">02</span>
+          <div><h3>Estratégia</h3><p>Definimos estrutura, hierarquia de conteúdo e a jornada até a ação principal.</p></div>
+        </div>
+        <div class="process-step">
+          <span class="process-step__num">03</span>
+          <div><h3>Design</h3><p>Criamos a identidade visual — paleta, tipografia e composição — específica para o segmento.</p></div>
+        </div>
+        <div class="process-step">
+          <span class="process-step__num">04</span>
+          <div><h3>Desenvolvimento</h3><p>Construímos a página com foco em performance: leve, rápida e fácil de manter.</p></div>
+        </div>
+        <div class="process-step">
+          <span class="process-step__num">05</span>
+          <div><h3>Entrega</h3><p>Testamos responsividade, acessibilidade e performance antes de publicar.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CTA FINAL ================= -->
+  <section class="cta-final" id="contato">
+    <span class="mark mark--signal cta-final__corner cta-final__corner--tl" aria-hidden="true"></span>
+    <span class="mark mark--signal cta-final__corner cta-final__corner--br" aria-hidden="true"></span>
+    <div class="container cta-final__inner">
+      <h2 data-reveal="clip-x">Se você tem um projeto, temos a estrutura para construí-lo.</h2>
+      <p data-reveal="fade">Vamos transformar a presença digital do seu negócio em algo à altura do que ele já é.</p>
+      <a href="mailto:andrei.fontanarimartinez@gmail.com?subject=Novo%20projeto" class="btn btn--primary btn--lg magnetic" data-reveal="fade">
+        <i data-lucide="mail"></i> Escrever um e-mail
+      </a>
+    </div>
+  </section>
+
 </main>
 
 <footer class="footer">
-  <div class="container footer__bottom">
-    <span>&copy; <span data-year></span> Vitrine de Landing Pages. Uso interno.</span>
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <div class="footer__brand"><span class="mark" aria-hidden="true"></span> .Landing</div>
+        <p style="max-width:32ch;">Estúdio front-end. Landing pages e websites com identidade própria para cada negócio.</p>
+      </div>
+      <div>
+        <h4>Navegação</h4>
+        <ul>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#projetos">Projetos</a></li>
+          <li><a href="#servicos">Serviços</a></li>
+          <li><a href="#processo">Processo</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contato</h4>
+        <ul class="footer__contact">
+          <li><i data-lucide="mail"></i> <a href="mailto:andrei.fontanarimartinez@gmail.com">andrei.fontanarimartinez@gmail.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; <span data-year></span> .Landing. Todos os direitos reservados.</span>
+      <span>Construído linha a linha.</span>
+    </div>
   </div>
 </footer>
 
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 <script src="_shared/base.js"></script>
+<script src="home.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="home-motion.js"></script>
 </body>
 </html>
