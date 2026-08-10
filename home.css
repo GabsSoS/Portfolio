@@ -95,7 +95,7 @@ body { background: var(--paper); color: var(--ink); }
 .nav__indicator { position: absolute; bottom: -7px; left: 0; height: 1px; width: 0; background: var(--signal); pointer-events: none; }
 
 @media (max-width: 900px) {
-  .nav__links { background: var(--paper); border-left: 1px solid var(--rule); font-size: 1rem; }
+  .nav__links { position: fixed; background: var(--paper); border-left: 1px solid var(--rule); font-size: 1rem; }
   .nav__indicator { display: none; }
 }
 
